@@ -15,15 +15,11 @@
 int	main(void)
 {
 	printf("\nSTART\n\n");
-	printf("\t%d", ft_printf("%c", '\0'));printf("\n");
-	printf("\t%d", ft_printf("%c", 'a'));printf("\n");
-	printf("\t%d", ft_printf("%s", "Hola Mundo"));printf("\n");
-	printf("\t%d", ft_printf("%d", +123));printf("\n");
-	printf("\t%d", ft_printf("%u", -123));printf("\n");
 
-	printf("\n\n");
-	printf("\t%d", printf("%i", -10));printf("\n");
+	printf("\t%d", printf("%i", -10));
+	printf("\n");
+	printf("\t%d", ft_printf("%i", -10));
 
-	printf("\n\nFINISH\n\n");
+	printf("\n\nFINISH\n");
 	return (0);
 }

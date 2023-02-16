@@ -4,7 +4,7 @@
         {
             "type": "shell",
             "label": "COMP",
-            "command": "clear && gcc -Wall -Werror -Wextra -g3 get_next_line.c get_next_line_utils.c get_next_line.h",
+            "command": "clear && make && gcc no_main.c *.a",
             "options": {
                 "cwd": "${workspaceFolder}"
             },
