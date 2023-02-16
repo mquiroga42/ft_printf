@@ -15,7 +15,7 @@
 int	ft_printf_char(int c)
 {
 	if (!c)
-		return (write(1, "(null)", 6), 0);
+		return (0);
 	else
 		write(1, &c, 1);
 	return (1);
