@@ -1,0 +1,21 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "COMP",
+            "command": "clear && gcc -Wall -Werror -Wextra -g3 get_next_line.c get_next_line_utils.c get_next_line.h",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "detail": "Custom Debugger"
+        }
+    ]
+}

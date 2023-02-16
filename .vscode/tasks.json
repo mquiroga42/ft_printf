@@ -1,0 +1,54 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "comp",
+            "command": "make && clear && gcc -g3 main.c libftprintf.a",
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "detail": "Custom Debugger"
+        },
+        {
+            "type": "shell",
+            "label": "valgrind",
+            "command": "clear && valgrind ./a.out",
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "detail": "Custom Debugger"
+        },
+        {
+            "dependsOn": "valgrind",
+            "type": "shell",
+            "label": "clean",
+            "command": "rm -rf a.out && make fclean",
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "detail": "Custom Debugger"
+        }
+    ]
+}
