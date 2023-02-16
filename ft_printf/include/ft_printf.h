@@ -22,6 +22,6 @@
 int	ft_printf(char const *arg, ...);
 int	ft_printf_char(int c);
 int	ft_printf_int(int n);
-int	ft_printf_usigint(int n);
+int	ft_printf_uint(unsigned int n);
 
 #endif

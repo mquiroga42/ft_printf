@@ -44,13 +44,13 @@ int	ft_printf_int(int n)
 	return (lenght);
 }
 
-int	ft_printf_usigint(int n)
+int	ft_printf_uint(unsigned int n)
 {
 	char	*number;
 	char	*temp;
 	int		lenght;
 
-	number = ft_itoa(n);
+	number = ft_itoa((int)n);
 	temp = number;
 	while (!ft_isdigit(*number))
 			number++;

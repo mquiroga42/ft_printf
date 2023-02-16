@@ -21,12 +21,12 @@ int	ft_formats(va_list args, char format)
 	str_size = 0;
 	if (format == 'c')
 		str_size += ft_printf_char(va_arg(args, int));
-	if (format == 'd' || format == 'i')
+	else if (format == 'd' || format == 'i')
 		str_size += ft_printf_int(va_arg(args, int));
-	if (format == 's')
+	else if (format == 's')
 		str_size += ft_printf(va_arg(args, char *));
-	if (format == 'u')
-		str_size += ft_printf_usigint(va_arg(args, int));
+	else if (format == 'u')
+		str_size += ft_printf_uint(va_arg(args, unsigned int));
 	return (str_size);
 }
 
