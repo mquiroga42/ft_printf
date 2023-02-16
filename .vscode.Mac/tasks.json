@@ -4,7 +4,7 @@
         {
             "type": "shell",
             "label": "COMP",
-            "command": "clear && make && gcc no_main.c *.a",
+            "command": "make && clear && gcc no_main.c *.a",
             "options": {
                 "cwd": "${workspaceFolder}"
             },
