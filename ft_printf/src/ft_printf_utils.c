@@ -26,7 +26,10 @@ int	ft_printf_str(char *str)
 	int	i;
 
 	if (!str)
-		return (ft_printf_char('\0'));
+	{
+		ft_printf_str("(null)");
+		return (6);
+	}
 	i = -1;
 	while (str[++i])
 		write(1, &str[i], 1);
@@ -46,15 +49,42 @@ int	ft_printf_int(int n)
 
 int	ft_printf_uint(unsigned int n)
 {
-	char	*number;
 	char	*temp;
 	int		lenght;
 
-	number = ft_itoa((int)n);
-	temp = number;
-	while (!ft_isdigit(*number))
-			number++;
-	lenght = ft_printf_str(number);
+	temp = ft_uitoa(n);
+	lenght = ft_printf_str(temp);
 	free(temp);
 	return (lenght);
 }
+
+int	ft_printf_hex(unsigned int n, int upper)
+{
+	char	hex[16];
+	int		count;
+	int		i;
+
+	i = 0;
+	count = 0;
+	while (i < 16)
+	{
+		if (i < 10)
+			hex[i] = '0' + i;
+		else if (upper)
+			hex[i] = 'A' + i - 10;
+		else
+			hex[i] = 'a' + i - 10;
+		i++;
+	}
+	if (n < 16)
+		return (ft_printf_char(hex[n]));
+	count = ft_printf_hex(n / 16, upper);
+	return (ft_printf_char(hex[n % 16]) + count);
+}
+// TODO terminar la función del pointer
+int ft_printf_point(unsigned long	pointer)
+{
+	ft_printf_hex(pointer, 0);
+	return (0);
+}
+

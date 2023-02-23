@@ -17,11 +17,15 @@
 # include <unistd.h>
 # include <stdarg.h>
 # include <stdio.h>
+# include <limits.h>
 # include "../../libft/include/libft.h"
 
 int	ft_printf(char const *arg, ...);
 int	ft_printf_char(int c);
+int	ft_printf_str(char *str);
 int	ft_printf_int(int n);
 int	ft_printf_uint(unsigned int n);
+int	ft_printf_hex(unsigned int n, int upper);
+int	ft_printf_point( unsigned  long);
 
 #endif

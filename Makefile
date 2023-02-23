@@ -25,6 +25,7 @@ OBJS:=$(patsubst ft_printf/src/%.c,ft_printf/src/%.o,$(SRCS))
 #_____PROGRAM_____#
 
 all: $(NAME)
+	@$(CC) no_main.c $(NAME) -o exec
 
 $(NAME): $(OBJS)
 	@make -C libft
@@ -36,6 +37,7 @@ $(NAME): $(OBJS)
 
 clean:
 	@rm -rf $(OBJS)
+	@rm -rf exec
 	@make -C libft clean
 
 fclean: clean

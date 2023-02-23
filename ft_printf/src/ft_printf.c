@@ -24,9 +24,15 @@ int	ft_formats(va_list args, char format)
 	else if (format == 'd' || format == 'i')
 		str_size += ft_printf_int(va_arg(args, int));
 	else if (format == 's')
-		str_size += ft_printf(va_arg(args, char *));
+		str_size += ft_printf_str(va_arg(args, char *));
 	else if (format == 'u')
 		str_size += ft_printf_uint(va_arg(args, unsigned int));
+	else if (format == 'x')
+		str_size += ft_printf_hex(va_arg(args, unsigned int), 0);
+	else if (format == 'X')
+		str_size += ft_printf_hex(va_arg(args, unsigned int), 1);
+	else if (format == 'p')
+		str_size += ft_printf_point(va_arg(args, unsigned  long));
 	return (str_size);
 }
 
