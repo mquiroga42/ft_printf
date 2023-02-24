@@ -26,6 +26,6 @@ int	ft_printf_str(char *str);
 int	ft_printf_int(int n);
 int	ft_printf_uint(unsigned int n);
 int	ft_printf_hex(unsigned int n, int upper);
-int	ft_printf_point( unsigned  long);
+int	ft_printf_point( unsigned  long long);
 
 #endif

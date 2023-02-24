@@ -32,7 +32,9 @@ int	ft_formats(va_list args, char format)
 	else if (format == 'X')
 		str_size += ft_printf_hex(va_arg(args, unsigned int), 1);
 	else if (format == 'p')
-		str_size += ft_printf_point(va_arg(args, unsigned  long));
+		str_size += ft_printf_point(va_arg(args, unsigned long long));
+	else if (format == '%')
+		str_size += ft_printf_char('%');
 	return (str_size);
 }
 

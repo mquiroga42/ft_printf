@@ -81,10 +81,36 @@ int	ft_printf_hex(unsigned int n, int upper)
 	count = ft_printf_hex(n / 16, upper);
 	return (ft_printf_char(hex[n % 16]) + count);
 }
-// TODO terminar la función del pointer
-int ft_printf_point(unsigned long	pointer)
+
+static int	ft_printf_ulhex(unsigned long long n, int upper)
 {
-	ft_printf_hex(pointer, 0);
-	return (0);
+	char				hex[16];
+	unsigned long long	count;
+	unsigned long long	i;
+
+	i = 0;
+	count = 0;
+	while (i < 16)
+	{
+		if (i < 10)
+			hex[i] = '0' + i;
+		else if (upper)
+			hex[i] = 'A' + i - 10;
+		else
+			hex[i] = 'a' + i - 10;
+		i++;
+	}
+	if (n < 16)
+		return (ft_printf_char(hex[n]));
+	count = ft_printf_ulhex(n / 16, upper);
+	return (ft_printf_char(hex[n % 16]) + count);
+}
+
+int ft_printf_point(unsigned long long	pointer)
+{
+	if (!pointer)
+		return (ft_printf_str("(nil)"));
+	ft_printf_str("0x");
+	return (2 + (ft_printf_ulhex(pointer, 0)));
 }
 

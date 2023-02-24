@@ -14,13 +14,13 @@
 
 int	main(void)
 {
-	int	param;
+	int param;
 
-	param = 110;
+	param = 25;
 	printf("\nSTART\n\n");
-	printf("\t%d", printf("%p", param));
+	printf("\t%d", printf("Hola 100%%"));
 	printf("\n");
-	printf("\t%d", ft_printf("%p", param));
+	printf("\t%d", ft_printf("Hola 100%%"));
 	printf("\n\nFINISH\n");
 	return (0);
 }
