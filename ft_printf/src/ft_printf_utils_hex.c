@@ -12,53 +12,58 @@
 
 #include "../include/ft_printf.h"
 
-int	ft_printf_char(int c)
+int	ft_printf_hex(unsigned int n, int upper)
 {
-	if (c == 0)
+	char	hex[16];
+	int		count;
+	int		i;
+
+	i = 0;
+	count = 0;
+	while (i < 16)
 	{
-		write(1, &c, 1);
-		return (1);
+		if (i < 10)
+			hex[i] = '0' + i;
+		else if (upper)
+			hex[i] = 'A' + i - 10;
+		else
+			hex[i] = 'a' + i - 10;
+		i++;
 	}
-	if (c == '\0')
-		return (write(1, "(null)", 6), 0);
-	else
-		write(1, &c, 1);
-	return (1);
+	if (n < 16)
+		return (ft_printf_char(hex[n]));
+	count = ft_printf_hex(n / 16, upper);
+	return (ft_printf_char(hex[n % 16]) + count);
 }
 
-int	ft_printf_str(char *str)
+static int	ft_printf_ulhex(unsigned long long n, int upper)
 {
-	int	i;
+	char				hex[16];
+	unsigned long long	count;
+	unsigned long long	i;
 
-	if (!str)
+	i = 0;
+	count = 0;
+	while (i < 16)
 	{
-		ft_printf_str("(null)");
-		return (6);
+		if (i < 10)
+			hex[i] = '0' + i;
+		else if (upper)
+			hex[i] = 'A' + i - 10;
+		else
+			hex[i] = 'a' + i - 10;
+		i++;
 	}
-	i = -1;
-	while (str[++i])
-		write(1, &str[i], 1);
-	return (i);
+	if (n < 16)
+		return (ft_printf_char(hex[n]));
+	count = ft_printf_ulhex(n / 16, upper);
+	return (ft_printf_char(hex[n % 16]) + count);
 }
 
-int	ft_printf_int(int n)
+int	ft_printf_point(unsigned long long pointer)
 {
-	char	*number;
-	int		lenght;
-
-	number = ft_itoa(n);
-	lenght = ft_printf_str(number);
-	free(number);
-	return (lenght);
-}
-
-int	ft_printf_uint(unsigned int n)
-{
-	char	*temp;
-	int		lenght;
-
-	temp = ft_uitoa(n);
-	lenght = ft_printf_str(temp);
-	free(temp);
-	return (lenght);
+	ft_printf_str("0x");
+	if (!pointer)
+		return (write(1, "0", 1), 3);
+	return (2 + (ft_printf_ulhex(pointer, 0)));
 }

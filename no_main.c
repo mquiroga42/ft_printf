@@ -14,7 +14,7 @@
 
 int	main(void)
 {
-	int param;
+	int	param;
 
 	param = 25;
 	printf("\nSTART\n\n");
