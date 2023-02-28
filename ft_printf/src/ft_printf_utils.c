@@ -14,8 +14,13 @@
 
 int	ft_printf_char(int c)
 {
-	if (!c)
-		return (0);
+	if (c == 0)
+	{
+		write(1, &c, 1);
+		return (1);
+	}
+	if (c == '\0')
+		return (write(1, "(null)", 6), 0);
 	else
 		write(1, &c, 1);
 	return (1);
@@ -108,9 +113,9 @@ static int	ft_printf_ulhex(unsigned long long n, int upper)
 
 int ft_printf_point(unsigned long long	pointer)
 {
-	if (!pointer)
-		return (ft_printf_str("(nil)"));
 	ft_printf_str("0x");
+	if (!pointer)
+		return (write(1,"0",1), 3);
 	return (2 + (ft_printf_ulhex(pointer, 0)));
 }
 
