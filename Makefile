@@ -17,12 +17,20 @@ CC = gcc
 CFLAGS = -Wall -Werror -Wextra
 
 #_____OBJS_____#
+override SRCS := ft_printf.c\
+		ft_printf_utils.c\
+		ft_printf_utils_hex.c
 
-SRCS:=$(wildcard ft_printf/src/*.c)
-HEADERS:=$(wildcard ft_printf/include/*.h)
+override SRCS := $(addprefix ft_printf/src/,$(SRCS))
+
+override HEADER := ft_printf.h
+override HEADER := $(addprefix ft_printf/include/,$(HEADER))
+
 OBJS:=$(patsubst ft_printf/src/%.c,ft_printf/src/%.o,$(SRCS))
 
 #_____PROGRAM_____#
+%.o: %.c
+	@$(CC) -c $(CFLAGS) -Iinclude $< -o $@
 
 all: $(NAME)
 	@$(CC) no_main.c $(NAME) -o exec
@@ -32,8 +40,7 @@ $(NAME): $(OBJS)
 	@mv libft/libft.a $(NAME)
 	@ar rcs $(NAME) $(OBJS)
 
-%.o: %.c
-	@$(CC) -c $(CFLAGS) -o $@ $^
+
 
 clean:
 	@rm -rf $(OBJS)
