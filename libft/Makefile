@@ -14,7 +14,7 @@
 
 NAME = libft.a
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -g3
 
 #_____CONF_____#
 
@@ -63,10 +63,12 @@ OBJS_BONUS:=$(patsubst $(SRC_DIR)%.c,$(SRC_DIR)%.o,$(SRCS_BONUS))
 all: $(NAME)
 
 bonus: $(NAME) $(OBJS_BONUS)
+	@echo "$(GREEN)Generando librería...$(DEF_COLOR)"
+	@echo "$(GREEN)Compilando $(WHITE) $(NAME) $(GREEN)\t✔️$(DEF_COLOR)"
 	@ar rcs $(NAME) $(OBJS)
+	@echo "$(GREEN)Librería generada$(DEF_COLOR)"
 
 $(NAME): $(OBJS)
-	@clear
 	@echo "$(GREEN)Generando librería...$(DEF_COLOR)"
 	@echo "$(GREEN)Compilando $(WHITE) $(NAME) $(GREEN)\t✔️$(DEF_COLOR)"
 	@ar rcs $(NAME) $(OBJS)
@@ -75,6 +77,7 @@ $(NAME): $(OBJS)
 %.o: %.c
 	@echo "$(YELLOW)Compilando $(WHITE) $< $(GREEN)\t✔️$(DEF_COLOR)"
 	@$(CC) -c $(CFLAGS) -I $(HEADER_DIR) $< -o $@
+
 clean:
 	@rm -rf $(OBJS)
 
@@ -83,10 +86,4 @@ fclean: clean
 
 re: fclean all
 
-debug: CFLAGS += -g3
-debug: all bonus
-
-sanitize: CFLAGS += -fsanitize=address -g3
-sanitize: all bonus
-
-.PHONY: all clean
+.PHONY: all re clean fclean

@@ -52,7 +52,8 @@ int	ft_printf(const char *str, ...)
 		if (str[i] == '%')
 		{
 			response += ft_formats(args, str[i + 1]);
-			i++;
+			if (str[i + 1])
+				i++;
 		}
 		else
 			response += ft_printf_char(str[i]);

@@ -14,7 +14,7 @@
 
 NAME = libftprintf.a
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -g3
 
 #_____CONF_____#
 
@@ -52,7 +52,6 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	@make -C libft
 	@mv libft/libft.a $(NAME)
-	@clear
 	@echo "$(GREEN)Generando librería...$(DEF_COLOR)"
 	@echo "$(YELLOW)Compilando $(WHITE) $(NAME) $(GREEN)\t✔️$(DEF_COLOR)"
 	@ar rcs $(NAME) $(OBJS)
@@ -63,20 +62,13 @@ $(NAME): $(OBJS)
 	@$(CC) -c $(CFLAGS) -I $(HEADER_DIR) $< -o $@
 
 clean:
-	@rm -rf $(OBJS)
-	@rm -rf exec
+	@$(RM) $(OBJS) exec
 	@make -C libft clean
 
 fclean: clean
-	@rm -rf $(NAME)
+	@$(RM) $(NAME)
 	@make -C libft fclean
 
 re: fclean all
-
-debug: CFLAGS += -g3
-debug: all
-
-sanitize: CFLAGS += -fsanitize=address -g3
-sanitize: all
 
 .PHONY: all re clean fclean
