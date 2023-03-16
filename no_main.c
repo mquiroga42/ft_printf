@@ -18,9 +18,9 @@ int	main(void)
 
 	param = 25;
 	printf("\nSTART\n\n");
-	printf("\t%d", printf("Hola 100%%"));
+	printf("\t%d", printf("%d%%%c", 0, 127));
 	printf("\n");
-	printf("\t%d", ft_printf("Hola 100%%"));
+	printf("\t%d", ft_printf("%d%%%c", 0, 127));
 	printf("\n\nFINISH\n");
 	return (0);
 }

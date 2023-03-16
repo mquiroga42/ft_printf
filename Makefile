@@ -14,7 +14,7 @@
 
 NAME = libftprintf.a
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra -g3
+CFLAGS = -g3 -Wall -Werror -Wextra
 
 #_____CONF_____#
 
@@ -47,7 +47,6 @@ OBJS:=$(patsubst $(SRC_DIR)%.c,$(SRC_DIR)%.o,$(SRCS))
 
 #_____PROGRAM_____#
 all: $(NAME)
-	@$(CC) no_main.c $(NAME) -o exec
 
 $(NAME): $(OBJS)
 	@make -C libft

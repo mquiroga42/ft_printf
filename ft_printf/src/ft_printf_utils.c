@@ -14,15 +14,7 @@
 
 int	ft_printf_char(int c)
 {
-	if (c == 0)
-	{
-		write(1, &c, 1);
-		return (1);
-	}
-	if (c == '\0')
-		return (write(1, "(null)", 6), 0);
-	else
-		write(1, &c, 1);
+	write(1, &c, 1);
 	return (1);
 }
 

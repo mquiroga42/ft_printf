@@ -14,7 +14,7 @@
 
 NAME = libft.a
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra -g3
+CFLAGS = -g3 -Wall -Werror -Wextra
 
 #_____CONF_____#
 
@@ -79,10 +79,10 @@ $(NAME): $(OBJS)
 	@$(CC) -c $(CFLAGS) -I $(HEADER_DIR) $< -o $@
 
 clean:
-	@rm -rf $(OBJS)
+	@$(RM) $(OBJS)
 
 fclean: clean
-	@rm -rf $(NAME)
+	@$(RM) $(NAME)
 
 re: fclean all
 
